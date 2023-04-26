@@ -13,24 +13,21 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ApiService {
+object ApiService {
 
 
     @Provides
-    @Singleton
-    fun provideRetrofit() : Retrofit {
+    fun provideBaseUrl () = Constants.BASE_URL
 
-        return  Retrofit.Builder()
+    @Provides
+    @Singleton
+    fun provideRetrofit(BASE_URL : String) : AllApiEndPoints =  Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
+            .create(AllApiEndPoints::class.java)
 
-    @Provides
-    @Singleton
-    fun getAllApiEndPoints(retrofit: Retrofit) : AllApiEndPoints {
 
-        return  retrofit.create(AllApiEndPoints::class.java)
-    }
+
 
 }

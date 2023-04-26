@@ -13,14 +13,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-
-
-     val  postViewModel: PostViewModel by viewModels()
+     private val  postViewModel: PostViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         postViewModel.getAllPost()
+
+
+
     }
 }

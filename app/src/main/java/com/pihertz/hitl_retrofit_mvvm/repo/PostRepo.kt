@@ -14,5 +14,5 @@ import javax.inject.Inject
 class PostRepo @Inject constructor(private  val allApiEndPoints: AllApiEndPoints) {
 
 
- suspend   fun getAllPost() : LiveData<List<PostVo>> = allApiEndPoints.getAllPosts()
+ suspend   fun getAllPost() = allApiEndPoints.getAllPosts()
 }
